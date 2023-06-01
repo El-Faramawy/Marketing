@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <!-- ======== BOOTSTRAP ============== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+   
+    <!-- ============= Fontawseome =========== -->
+    <link rel="stylesheet" href="assets/Css/all.min.css">
+
+    <!-- ================= CSS STYLE =========== -->
+    <link rel="stylesheet" href="assets/Css/style.css">
+
+    <!-- ================= FavIcon ============ -->
+    <link rel="icon" href="assets/imgs/favicon.png">
+
+</head>
+<body>
+    <div class=" nav" id="NavBar">
+        <div class="container- flex">
+            <div class="logo">
+                <img src="assets/imgs/logo-1.png">
+            </div>
+            <nav>
+                <div class="links hiden" id="navBar">
+                    <div class="logo-2">
+                        <img src="assets/imgs/logo-1.png">
+                        <i class="fa-solid fa-xmark" id="closeTheNav"></i>
+                    </div>
+                    <ul class="first-ul">
+                        <li><a href="index.html" class="nav-link"> home </a></li>
+                        <li><a href="about.html" class="nav-link">about us </a></li>
+                    </ul>
+                    <div class=" contact">
+                        <ul class="second-ul">           
+                            <li><a href="#" class="nav-link soon"> coming soon </a></li>
+                            <li><a href="sinin.html" class="nav-link"> log in </a></li>
+                        </ul>
+                         
+                         <select class="selectpicker" data-width="fit">
+                        <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+                          <option  data-content='<span class="flag-icon flag-icon-fr"></span> France'>France</option></select>
+                         
+                    </div>
+                    <!-- <div class="contact-small-screens">
+                        <p>Our mission is to help bring all technology Solutions from A-to-Z.</p>
+                        <a href="#">0100000000</a>
+                        <div class="social">
+                            <a href="#" target="_blank"><i
+                                    class="fa-brands fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i
+                                    class="fa-brands fa-twitter"></i></a>   
+                            <a href="#" target="_blank"><i
+                                    class="fa-brands fa-google-plus-g"></i></a>
+                            <a href="#" target="_blank"><i
+                                    class="fa-brands fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class=" bars" id="openMenue">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+    <div class="sign-up-form">
+        <div class="container-">
+            <form class="form-inline" onsubmit="console.log('Done')" action="" method="get" id="myForm">
+                <div class="si-up-body" id="signUp">
+                    <h1>sign up here</h1>
+                    <div class="company group-elements">
+                        <div>
+                            <Label for="com-Name" class="form-label">company name</Label>
+                            <input type="text" id="com-Name" name="companyName" class="form-control form-control-lg">
+                        </div>
+                        <div>
+                            <Label for="selectActivity" class="form-label">activity</Label>
+                            <select id="selectActivity" name="activity" class="form-control form-control-lg">
+                                <option value="resturant">resturant</option>
+                                <option value="option-two">option two</option>
+                                <option value="option-three">option three</option>
+                                <option value="option-four">option four</option>
+                                <option value="option-five">option five</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="company-contact group-elements">
+                        <div>
+                            <Label for="phone" class="form-label">phone Number</Label>
+                            <input type="tel" id="phone" name="phoneNumber" class="form-control form-control-lg">
+                        </div>
+                        <div>
+                            <Label for="postal" class="form-label">postal code</Label>
+                            <input type="text" id="postal" name="postalCode" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="company-address group-elements">
+                        <div>
+                            <Label for="city" class="form-label">City</Label>
+                            <input type="text" id="city" name="cityName" class="form-control form-control-lg">
+                        </div>
+                        <div>
+                            <Label for="region" class="form-label">region</Label>
+                            <input type="text" id="region" name="regionName" class="form-control form-control-lg">
+                        </div>
+                        <div class="full-address">
+                            <label for="fullAddress" class="form-label">Address</label>
+                            <input type="text" id="fullAddress" name="fullAddress" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="company-email group-elements">
+                        <div>
+                            <Label for="email" class="form-label">Email Address</Label>
+                            <input type="email" id="email" name="emil" class="form-control form-control-lg">
+                        </div>
+                        <div>
+                            <Label for="verEmail" class="form-label">confirm email</Label>
+                            <input type="email" id="verEmail" name="verEmail" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="company-password group-elements">
+                        <div>
+                            <Label for="password" class="form-label">Password</Label>
+                            <input type="password" id="password" name="password" class="form-control form-control-lg">
+                        </div>
+                        <div>
+                            <Label for="verpassword" class="form-label">confirm password</Label>
+                            <input type="password" id="verpassword" name="verPassword" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="price group-elements">
+                        <Label for="price" class="form-label">price</Label>
+                        <select id="price" name="price" class="form-control form-control-lg">
+                            <option value="price-one">10$</option>
+                            <option value="price-two">30$</option>
+                            <option value="price-three">40$</option>
+                            <option value="price-four">70$</option>
+                            <option value="price-five">100%</option>
+                        </select>
+                    </div>
+                    <button type="button" class="submit-btn" id="next">NEXT</button>
+                    <div class="text-center">
+                        <p>Already have an account? <a href="sinin.html" class="reg-and-s-in">log in</a></p>
+                        <p>or sign up with:</p>
+                        <div class="s-in-btns">
+                        <button type="button" class="btn-primary">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                        <button type="button" class="btn-danger">
+                            <i class="fab fa-google"></i> google
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-body" id="creditCard">
+                    <h1>Credit Card </h1>
+                    <div class="Card">
+                      <label for="Num">Card Number</label>
+                      <!-- Card Number -->
+                      <input type="text" id="Num" class="card-number" placeholder="Card Number" name="cardNumber"/>
+                    </div>
+                    <h3>Expiration date: </h3>
+                    <!-- Date Field -->
+                    <div class="date-field">
+                      
+                      <div class="month">
+                        <label for="Month" class="MM">Month</label>
+                        <select name="Month" id="Month" name="month">
+                          <option value="january">January</option>
+                          <option value="february">February</option>
+                          <option value="march">March</option>
+                          <option value="april">April</option>
+                          <option value="may">May</option>
+                          <option value="june">June</option>
+                          <option value="july">July</option>
+                          <option value="august">August</option>
+                          <option value="september">September</option>
+                          <option value="october">October</option>
+                          <option value="november">November</option>
+                          <option value="december">December</option>
+                        </select>
+                      </div>
+                      <div class="year">
+                        <label for="Year">Year</label>
+            
+                        <select name="Year" id="Year" name="year">
+                          <option value="2016">2016</option>
+                          <option value="2017">2017</option>
+                          <option value="2018">2018</option>
+                          <option value="2019">2019</option>
+                          <option value="2020">2020</option>
+                          <option value="2021">2021</option>
+                          <option value="2022">2022</option>
+                          <option value="2023">2023</option>
+                          <option value="2024">2024</option>
+                        </select>
+                      </div>
+                    </div>
+            
+                    <!-- Card Verification Field -->
+                    <div class="card-verification">
+                      <div class="cvv-input">
+                        <label for="CVV">CVV</label>
+                        <input type="text" id="CVV" placeholder="CVV" name="cvv" />
+                        <div class="cvv-details">
+                          <p>
+                            3 or 4 digits usually found <br />
+                            on the signature strip
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+            
+                    <!-- Buttons -->
+                    <button type="button" class="proceed-btn" id="previous">
+                        previous
+                    </button>
+                    <button type="submit" class="active proceed-btn" onclick="openModal()">
+                        Confirm
+                    </button>
+                </div>
+            </form>
+            <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: fit-content; background-color: inherit; color: black;"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Verify your phone</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <p>We have sent your account verification code. Please check your phone and type the six digits, then click Confirm</p>
+                            <input type="text" class="form-control-lg" name="ver-code" placeholder="XXXXXX" maxlength="6">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </form>
+                    
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            
+        </div>
+        
+    </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="assets/JS/navbar.js"></script>
+    <script src="assets/JS/signup.js"></script>
+</body>
+</html>
