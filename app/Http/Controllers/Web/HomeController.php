@@ -13,6 +13,10 @@ class HomeController extends Controller
     }
     //==========================================================
     public function about(){
+        if (!auth()->check() ){
+            my_toaster('You are not logged in','warning');
+            return redirect('login');
+        }
         return view('Web.about');
     }
     //==========================================================

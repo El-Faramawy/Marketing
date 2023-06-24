@@ -88,10 +88,10 @@
                         <p>{{__('Already have an account?')}} <a href="{{url('login')}}" class="reg-and-s-in">{{__('login')}}</a></p>
                         <p>{{__('or sign up with:')}}</p>
                         <div class="s-in-btns">
-                        <button type="button" class="btn-primary">
+                        <button type="button" href="{{route('login.facebook')}}" class="btn-primary socialBtn">
                             <i class="fab fa-facebook-f"></i> Facebook
                         </button>
-                        <button type="button" class="btn-danger">
+                        <button type="button" href="{{route('login.google')}}" class="btn-danger socialBtn">
                             <i class="fab fa-google"></i> google
                         </button>
                         </div>
@@ -159,6 +159,8 @@
                       </div>
                     </div>
 
+                    <div id="recaptcha-container"></div>
+
 {{--                    <div id="recaptcha-container"></div>--}}
                     <!-- Buttons -->
                     <button type="button" class="proceed-btn" id="previous">
@@ -213,37 +215,113 @@
         })
     </script>
 
-{{--    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>--}}
-{{--    <script>--}}
-{{--        // Your web app's Firebase configuration--}}
-{{--        // For Firebase JS SDK v7.20.0 and later, measurementId is optional--}}
-{{--        var firebaseConfig = {--}}
-{{--            apiKey: "AIzaSyA-gj4Cje-NjRUtysAFaNZDdR7VKfdkLL0",--}}
-{{--            authDomain: "famous-5f5fc.firebaseapp.com",--}}
-{{--            projectId: "famous-5f5fc",--}}
-{{--            storageBucket: "famous-5f5fc.appspot.com",--}}
-{{--            messagingSenderId: "1084986292087",--}}
-{{--            appId: "1:1084986292087:web:ed81a7aae062168bd81372",--}}
-{{--            measurementId: "G-6D6NPKZ5Z6"--}}
-{{--        };--}}
-{{--        // Initialize Firebase--}}
-{{--        firebase.initializeApp(firebaseConfig);--}}
-{{--        // firebase.analytics();--}}
-{{--    </script>--}}
-{{--    <script type="text/javascript">--}}
-{{--        window.onload=function () {--}}
-{{--            render();--}}
-{{--        };--}}
+    <script>
+        $(document).on('click','.socialBtn', function (e){
+            e.preventDefault()
+            location.href = this.getAttribute('href')
+        })
+    </script>
 
-{{--        function render() {--}}
-{{--            window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');--}}
-{{--            recaptchaVerifier.render();--}}
-{{--        }--}}
+{{--    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>--}}
+
+{{--    <script type="text/javascript">--}}
+{{--        $(document).on('submit',"form#register_form",function (e) {--}}
+{{--            e.preventDefault();--}}
+
+{{--            var formData = new FormData(this);--}}
+
+
+{{--            $.ajax({--}}
+{{--                url: "{{route('user_validation')}}",--}}
+{{--                type: 'POST',--}}
+{{--                data: formData,--}}
+{{--                // beforeSend: function () {--}}
+{{--                //     $('#global-loader').show()--}}
+{{--                // },--}}
+{{--                success: function (data) {--}}
+
+{{--                    window.setTimeout(function () {--}}
+{{--                        // $('#global-loader').hide()--}}
+{{--                        // $('#submit').attr('disabled', false);--}}
+{{--                        if (data.success === 'true') {--}}
+{{--                            $('#myModal').modal('show');--}}
+
+{{--                            var firebaseConfig = {--}}
+{{--                                apiKey: "AIzaSyA-gj4Cje-NjRUtysAFaNZDdR7VKfdkLL0",--}}
+{{--                                authDomain: "famous-5f5fc.firebaseapp.com",--}}
+{{--                                projectId: "famous-5f5fc",--}}
+{{--                                storageBucket: "famous-5f5fc.appspot.com",--}}
+{{--                                messagingSenderId: "1084986292087",--}}
+{{--                                appId: "1:1084986292087:web:ed81a7aae062168bd81372",--}}
+{{--                                measurementId: "G-6D6NPKZ5Z6"--}}
+{{--                            };--}}
+
+{{--                            // Initialize Firebase--}}
+{{--                            firebase.initializeApp(firebaseConfig);--}}
+{{--                            // firebase.analytics();--}}
+{{--                            // window.onload=function () {--}}
+{{--                                phoneSendAuth()--}}
+{{--                                // render();--}}
+{{--                            // };--}}
+
+{{--                            // function render() {--}}
+{{--                            //     window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');--}}
+{{--                            //     recaptchaVerifier.render();--}}
+{{--                            // }--}}
+{{--                            // phoneSendAuth()--}}
+
+{{--                        }else {--}}
+{{--                            alert(1)--}}
+{{--                            var messages = Object.values(data.messages);--}}
+{{--                            $( messages ).each(function(index, message ) {--}}
+{{--                                my_toaster(message,'error')--}}
+{{--                            });--}}
+{{--                        }--}}
+{{--                    }, 100);--}}
+
+{{--                },--}}
+{{--                error: function (data) {--}}
+{{--                    $('#global-loader').hide()--}}
+{{--                    $('#form-load > .linear-background').hide(loader)--}}
+{{--                    $('#submit').html('حفظ').attr('disabled', false);--}}
+{{--                    $('#form').show()--}}
+{{--                    console.log(data)--}}
+{{--                    if (data.status === 500) {--}}
+{{--                        my_toaster('هناك خطأ ما','error')--}}
+{{--                    }--}}
+
+{{--                    if (data.status === 422) {--}}
+{{--                        var errors = $.parseJSON(data.responseText);--}}
+
+{{--                        $.each(errors, function (key, value) {--}}
+{{--                            if ($.isPlainObject(value)) {--}}
+{{--                                $.each(value, function (key, value) {--}}
+{{--                                    my_toaster(value,'error')--}}
+{{--                                });--}}
+
+{{--                            }--}}
+{{--                        });--}}
+{{--                    }--}}
+{{--                    if (data.status == 421){--}}
+{{--                        my_toaster(data.message,'error')--}}
+{{--                    }--}}
+
+{{--                },//end error method--}}
+
+{{--                cache: false,--}}
+{{--                contentType: false,--}}
+{{--                processData: false--}}
+{{--            });--}}
+
+
+{{--        });--}}
+
 
 {{--        function phoneSendAuth() {--}}
 
 {{--            var number = '+20'+$("#phone").val();--}}
-{{--            alert(number)--}}
+{{--            // var number = '+1'+$("#phone").val();--}}
+{{--            // alert(number)--}}
 
 {{--            firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {--}}
 
@@ -251,12 +329,15 @@
 {{--                coderesult=confirmationResult;--}}
 {{--                // alert(coderesult);--}}
 
-{{--                $("#sentSuccess").text("Message Sent Successfully.");--}}
-{{--                $("#sentSuccess").show();--}}
+{{--                // $("#sentSuccess").text("Message Sent Successfully.");--}}
+{{--                // $("#sentSuccess").show();--}}
+{{--                my_toaster("code sent to your phone")--}}
 
 {{--            }).catch(function (error) {--}}
-{{--                $("#error").text(error.message);--}}
-{{--                $("#error").show();--}}
+{{--                // $("#error").text(error.message);--}}
+{{--                // $("#error").show();--}}
+{{--                my_toaster("code sent to your phone","error")--}}
+
 {{--            });--}}
 
 {{--        }--}}
@@ -268,14 +349,84 @@
 {{--            coderesult.confirm(code).then(function (result) {--}}
 {{--                var user=result.user;--}}
 
-{{--                $("#successRegsiter").text("you are register Successfully.");--}}
-{{--                $("#successRegsiter").show();--}}
+{{--                $('#myModal').modal('hide');--}}
+
+{{--                var formData = new FormData("#form");--}}
+
+{{--                var url = $(this).attr('action');--}}
+{{--                // alert(url)--}}
+{{--                $.ajax({--}}
+{{--                    url: url,--}}
+{{--                    type: 'POST',--}}
+{{--                    data: formData,--}}
+{{--                    beforeSend: function () {--}}
+{{--                        $('#global-loader').show()--}}
+{{--                    },--}}
+{{--                    success: function (data) {--}}
+
+{{--                        window.setTimeout(function () {--}}
+{{--                            $('#global-loader').hide()--}}
+{{--                            $('#submit').attr('disabled', false);--}}
+{{--                            if (data.success === 'true') {--}}
+{{--                                $('#Modal').modal('hide')--}}
+{{--                                $('#form')[0].reset();--}}
+{{--                                if (data.url) {--}}
+{{--                                    window.setTimeout(function () {--}}
+{{--                                        location.href = data.url;--}}
+{{--                                    }, 1000);--}}
+{{--                                }--}}
+{{--                                if (data.message) {--}}
+{{--                                    my_toaster(data.message)--}}
+{{--                                }--}}
+
+{{--                            }else {--}}
+{{--                                var messages = Object.values(data.messages);--}}
+{{--                                $( messages ).each(function(index, message ) {--}}
+{{--                                    my_toaster(message,'error')--}}
+{{--                                });--}}
+{{--                            }--}}
+{{--                        }, 100);--}}
+
+{{--                    },--}}
+{{--                    error: function (data) {--}}
+{{--                        $('#global-loader').hide()--}}
+{{--                        $('#form-load > .linear-background').hide(loader)--}}
+{{--                        $('#submit').html('حفظ').attr('disabled', false);--}}
+{{--                        $('#form').show()--}}
+{{--                        console.log(data)--}}
+{{--                        if (data.status === 500) {--}}
+{{--                            my_toaster('هناك خطأ ما','error')--}}
+{{--                        }--}}
+
+{{--                        if (data.status === 422) {--}}
+{{--                            var errors = $.parseJSON(data.responseText);--}}
+
+{{--                            $.each(errors, function (key, value) {--}}
+{{--                                if ($.isPlainObject(value)) {--}}
+{{--                                    $.each(value, function (key, value) {--}}
+{{--                                        my_toaster(value,'error')--}}
+{{--                                    });--}}
+
+{{--                                }--}}
+{{--                            });--}}
+{{--                        }--}}
+{{--                        if (data.status == 421){--}}
+{{--                            my_toaster(data.message,'error')--}}
+{{--                        }--}}
+
+{{--                    },//end error method--}}
+
+{{--                    cache: false,--}}
+{{--                    contentType: false,--}}
+{{--                    processData: false--}}
+{{--                });--}}
+
 
 {{--            }).catch(function (error) {--}}
-{{--                $("#error").text(error.message);--}}
-{{--                $("#error").show();--}}
+{{--                console.log(error)--}}
+{{--                my_toaster("error","error");--}}
 {{--            });--}}
 {{--        }--}}
-{{--    </script>--}}
 
+{{--    </script>--}}
 @endpush

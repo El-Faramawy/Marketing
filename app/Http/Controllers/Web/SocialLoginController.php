@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\SendEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialLoginController extends Controller
 {
+    use SendEmail;
     // Google login
     public function redirectToGoogle()
     {
@@ -24,7 +26,7 @@ class SocialLoginController extends Controller
         $this->_registerOrLoginUser($user);
 
         // Return home after login
-        return redirect()->route('/');
+        return redirect()->route('welcome');
     }
 
     // Facebook login
@@ -41,7 +43,7 @@ class SocialLoginController extends Controller
         $this->_registerOrLoginUser($user);
 
         // Return home after login
-        return redirect()->route('/');
+        return redirect()->route('welcome');
     }
 
     protected function _registerOrLoginUser($data)
@@ -55,7 +57,10 @@ class SocialLoginController extends Controller
 //            $user->avatar = $data->avatar;
             $user->save();
         }
-
+        if (filter_var($user->email, FILTER_VALIDATE_EMAIL)){
+            $this->send_EmailFun($user->email,'you registered to Marketing','Marketing');
+//            return apiResponse(null,'code sent successfully');
+        }
         Auth::login($user);
     }
 

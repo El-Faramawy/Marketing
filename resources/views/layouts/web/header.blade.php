@@ -1,8 +1,8 @@
 <div class=" nav" id="NavBar">
     <div class="container- flex">
-        <div class="logo">
-            <img src="{{url('Web')}}/assets/imgs/logo-1.png">
-        </div>
+        <a href="{{url('/')}}" class="logo">
+            <img src="{{setting()->logo }}">
+        </a>
         <nav>
             <div class="links hiden" id="navBar">
                 <div class="logo-2">

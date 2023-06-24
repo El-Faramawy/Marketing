@@ -36,12 +36,13 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('update_user','Web\AuthController@update_user')->name('users.update');
     Route::get('sign_up','Web\AuthController@sign_up')->name('sign_up');
     Route::get('login','Web\AuthController@login')->name('login');
+    Route::post('user_validation', 'Web\AuthController@user_validation')->name('user_validation');
     Route::post('user_login', 'Web\AuthController@user_login')->name('user_login');
     Route::get('logout', 'Web\AuthController@logout')->name('logout');
 
     Route::get('get_city_regions','Web\AuthController@get_city_regions')->name('get_city_regions');
 
-//    Route::view('firebase','Web.firebase');
+    Route::view('firebase','Web.firebase');
 // Google login
     Route::get('login/google', 'Web\SocialLoginController@redirectToGoogle')->name('login.google');
     Route::get('login/google/callback', 'Web\SocialLoginController@handleGoogleCallback');

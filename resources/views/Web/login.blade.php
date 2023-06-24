@@ -29,10 +29,10 @@
           <p>{{__('Not a member?')}} <a href="{{url('sign_up')}}" class="reg-and-s-in">{{__('Register')}}</a></p>
           <p>{{__('or sign up with:')}}</p>
           <div class="s-in-btns">
-            <button type="button" href="{{route('login.facebook')}}" class="btn-primary">
+            <button type="button" href="{{route('login.facebook')}}" class="btn-primary socialBtn">
               <i class="fab fa-facebook-f"></i> Facebook
             </button>
-            <button type="button" href="{{route('login.google')}}" class="btn-danger">
+            <button type="button" href="{{route('login.google')}}" class="btn-danger socialBtn">
               <i class="fab fa-google"></i> google
             </button>
           </div>
@@ -41,3 +41,11 @@
     </div>
   </div>
 @endsection
+@push('site_js')
+    <script>
+        $(document).on('click','.socialBtn', function (e){
+            e.preventDefault()
+            location.href = this.getAttribute('href')
+        })
+    </script>
+@endpush

@@ -7,7 +7,9 @@
                 <p>{{__('home_text')}} </p>
                     <div class="buttons">
                         <a href="{{url('about')}}" class="nav-link soon"> {{__('ABOUT US')}} </a>
+                        @if(!auth()->check())
                         <a href="{{url('sign_up')}}" class="nav-link soon" style="background-color: rgb(33, 35, 49);"> {{__('Sign up')}} </a>
+                        @endif
                     </div>
             </div>
             <div class="home-imge">

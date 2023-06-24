@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\SendEmail;
 use App\Models\Activity;
 use App\Models\City;
 use App\Models\Price;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    use SendEmail;
     public function sign_up(){
         if (auth()->check() ){
             return redirect('/');
@@ -22,6 +24,31 @@ class AuthController extends Controller
         $cities = City::all();
         $prices = Price::all();
         return view('Web.sign_up',compact('activities','cities','prices'));
+    }
+    //==========================================================
+    public function user_validation(Request $request){
+        $valedator = Validator::make($request->all(), [
+            'activity_id' => 'required',
+            'phone' => 'required|unique:users,phone',
+            'city_id' => 'required',
+            'region_id' => 'required',
+            'address' => 'required',
+            'email' => 'required_with:verEmail|same:verEmail|unique:users,email',
+            'verEmail' => 'required',
+            'password' => 'required_with:verPassword|same:verPassword',
+            'verPassword' => 'required',
+            'price_id' => 'required',
+            'card_number' => 'required',
+            'month' => 'required',
+            'year' => 'required',
+            'cvv' => 'required',
+        ]);
+        if ($valedator->fails())
+            return response()->json(['messages' => $valedator->errors()->getMessages(), 'success' => 'false']);
+        return response()->json(
+            [
+                'success' => 'true',
+            ]);
     }
     //==========================================================
     public function store_user(Request $request){
@@ -49,6 +76,10 @@ class AuthController extends Controller
 
         auth()->login($user);
         $url = url('/');
+        if (filter_var($user->email, FILTER_VALIDATE_EMAIL)){
+            $this->send_EmailFun($request->email,'you registered to Marketing','Marketing');
+//            return apiResponse(null,'code sent successfully');
+        }
         return response()->json(
             [
                 'url' => $url,
@@ -115,6 +146,7 @@ class AuthController extends Controller
     }
     //==========================================================
     public function login(){
+//        return 1;
         if (auth()->check() ){
             return redirect('/');
         }
@@ -155,7 +187,7 @@ class AuthController extends Controller
     //==========================================================
     public function get_city_regions(Request $request){
         $regions = Region::where('city_id', $request->city_id)->get();
-        $data = '<option value="" selected disabled>اختر منطقة</option>';
+        $data = '<option value="" selected disabled>'.__("choose_region").'</option>';
 
         if ($regions){
             foreach($regions as $region){
